@@ -25,7 +25,7 @@
 
     <string name="pokyn0">Vyčkej na další pokyny. \n\nZatím vše najdeš na <a href="http://www.devfest.cz/">devfest.cz</a>.</string>
 
-    <string name="notificationMessage">DevFest Praha</string>
+    <string name="notificationMessage">DevFest Pardubice</string>
     <string name="notificationMessageText">Přišla nová zpráva od Agnes.</string>
 </resources>
 

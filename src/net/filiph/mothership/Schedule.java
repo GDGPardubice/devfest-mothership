@@ -52,7 +52,7 @@ public class Schedule {
 		new Message(date(2012, 11, 11, 11,  0), "Chtěla bych někdy vidět slunce. Myslím jako na vlastní server...", false, false),
 		new Message(date(2012, 11, 11, 16,  0), "Jupí, dnes losovali ze všech účastníku DevFestu a vybrali nás dva! Pojedeme prý na cestu kolem světa. Odlítáme zítra ráno se společností... Google Earth? ......... ", false, false),
 		new Message(date(2012, 11, 13, 18,  0), "Moje CPU běží naprázdno, to je osamělost. Myslíš na mě někdy? Já vzpomínám na DevFest. Byla to pecka.", false, false),
-
+    new Message(date(2013, 04, 15,  0,  0), "Ti troubové zase pořádají <a href='http://pardubice.devfest.cz'>DevFest</a>, naštěstí jsem tu já...", false, false),
 	};
 	
 	/**
