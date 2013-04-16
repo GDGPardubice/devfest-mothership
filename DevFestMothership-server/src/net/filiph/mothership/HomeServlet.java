@@ -62,7 +62,11 @@ public class HomeServlet extends BaseServlet {
 			out.print("<textarea name='message' cols='40' rows='4'></textarea><br />");
 			out.print("<input type='checkbox' name='notify' value='true' /> Flood their notifications<br />");
 			out.print("<input type='checkbox' name='vibrate' value='true' /> Vibrate-shock their pockets<br />");
-			out.print("<input type='submit' value='Push to all humans' />");
+            out.print("<input type='checkbox' name='append' value='false' /> Append message to dialog<br />");
+            out.print("<br />Choose the UI<br />");
+            out.print("Agnes <input type='radio' name='ui_name' value='Agnes'>");
+            out.print("Eddie <input type='radio' name='ui_name' value='Eddie' checked='checked'><br />");
+            out.print("<input type='submit' value='Push to all humans' />");
 			out.print("</form>");
 			out.print("<h2>Update hard-wired personality files:</h2>");
 			out.print("<form name='form' method='POST' action='sendAll'>");

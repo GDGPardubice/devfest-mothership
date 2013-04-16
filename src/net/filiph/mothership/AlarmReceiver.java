@@ -45,7 +45,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 		
 		NotificationHelper.clearNotification(context);
 		if (bundle.getBoolean("notify")) {
-			NotificationHelper.notify(context, bundle.getBoolean("vibrate"));
+			NotificationHelper.notify(context, bundle.getBoolean("vibrate"), bundle.getInt("ai_id"));
 		}
 
 		setAlarmForNextMessage(context);
@@ -66,6 +66,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 			newIntent.putExtra("forceShowActivity", nextMessage.forceShowActivity);
 			newIntent.putExtra("vibrate", nextMessage.vibrate);
 			newIntent.putExtra("notify", nextMessage.notify);
+            newIntent.putExtra("ai_id", nextMessage.ai_id);
 			PendingIntent sender = PendingIntent.getBroadcast(context, REQUEST_CODE, newIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 			try {

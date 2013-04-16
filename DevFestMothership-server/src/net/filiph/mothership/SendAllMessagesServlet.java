@@ -63,6 +63,15 @@ public class SendAllMessagesServlet extends BaseServlet {
 			if (req.getParameter("update")!=null) {
 				messageText += "u";
 			}
+            if (req.getParameter("append")!=null) {
+                messageText += "a";
+            }
+            if ("Agnes".equals(req.getParameter("ui_name"))) {
+                messageText += "0";
+            }
+            else if ("Eddie".equals(req.getParameter("ui_name"))) {
+                messageText += "1";
+            }
 			messageText += "]";
 			if (req.getParameter("message") != null) {
 				messageText += req.getParameter("message");

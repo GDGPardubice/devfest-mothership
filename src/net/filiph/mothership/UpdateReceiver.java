@@ -3,6 +3,7 @@ package net.filiph.mothership;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 /**
  * This simple Broadcast Receiver listens to the relevant intent
@@ -18,7 +19,7 @@ public class UpdateReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        //Log.i("dbg","onRecieve() called!");
+        Log.i("dbg", "onRecieve() called!");
         if (activity != null) {
         	// TODO
         	activity.showCurrentMessage(MainActivity.TYPING_DEFAULT);
