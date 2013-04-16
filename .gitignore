@@ -21,3 +21,7 @@ local.properties
 .classpath
 .project
 DevFestMothership-server/.settings/com.google.appengine.eclipse.core.prefs
+
+.idea
+
+/*.iml
