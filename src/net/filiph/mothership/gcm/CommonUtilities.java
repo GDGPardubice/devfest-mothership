@@ -142,7 +142,7 @@ public final class CommonUtilities {
             context.sendBroadcast(updateIntent);
         }
 
-        if (notify) {
+        if (notify && context.getSharedPreferences(MainActivity.PREFS_NAME, 0).getBoolean("showNotification", false)) {
             NotificationHelper.notify(context, vibrate, ai_id); // notify on new message and vibrate
         } else if (vibrate) {
             Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);

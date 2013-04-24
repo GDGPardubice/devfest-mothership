@@ -19,6 +19,7 @@ package net.filiph.mothership;
 import java.util.Date;
 
 import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 import net.filiph.mothership.gcm.CommonUtilities;
@@ -55,7 +56,7 @@ import com.google.android.gcm.GCMRegistrar;
  * This is the main activity, meaning the UI screen.
  */
 @TargetApi(8)
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
     private static final String TAG = "motherShip MainActivity";
 
@@ -90,6 +91,10 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        if (!getSharedPreferences(PREFS_NAME, 0).contains("showNotification")) {
+             new ShowNotificationDialog().show(getSupportFragmentManager(), "ShowNotificationDialogFragment");
+        }
 
         showCurrentMessage(TYPING_DEFAULT);
 
