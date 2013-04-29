@@ -20,12 +20,11 @@ import java.util.Date;
 
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.LinearLayout;
+import android.view.*;
+import android.widget.*;
 import net.filiph.mothership.gcm.CommonUtilities;
 import net.filiph.mothership.gcm.ServerUtilities;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -41,14 +40,9 @@ import android.os.Handler;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
-import android.view.Display;
-import android.view.Menu;
 import android.view.View.MeasureSpec;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.google.android.gcm.GCMRegistrar;
 
@@ -93,7 +87,7 @@ public class MainActivity extends FragmentActivity {
         super.onResume();
 
         if (!getSharedPreferences(PREFS_NAME, 0).contains("showNotification")) {
-             new ShowNotificationDialog().show(getSupportFragmentManager(), "ShowNotificationDialogFragment");
+            new ShowNotificationDialog().show(getSupportFragmentManager(), "ShowNotificationDialogFragment");
         }
 
         showCurrentMessage(TYPING_DEFAULT);
@@ -211,10 +205,29 @@ public class MainActivity extends FragmentActivity {
 
     private int funnyRemarkIndex = 0;
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
     /**
      * Clicking the menu button prints funny messages.
      */
-    public boolean onPrepareOptionsMenu(Menu menu) {
+
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        final MenuItem menuButton = menu.findItem(R.id.menu_changeNotification);
+        if (!getSharedPreferences(PREFS_NAME, 0).getBoolean("showNotification", false)) {
+            menuButton.setTitle(R.string.menu_notification_on);
+        } else {
+            menuButton.setTitle(R.string.menu_notification_off);
+        }
+        if (funnyRemarkIndex != 1) {
+            menuButton.setVisible(false);
+        } else {
+            menuButton.setVisible(true);
+        }
+
         final MainActivity mainActivity = this;
         final TextView t = (TextView) findViewById(R.id.textView);
         final TextView signature = (TextView) findViewById(R.id.signature);
@@ -259,13 +272,38 @@ public class MainActivity extends FragmentActivity {
                     typeHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
+                            closeOptionsMenu();
                             mainActivity.showCurrentMessage(TYPING_FORCE_SHOW);
                         }
                     }, 5000);
                 }
             }
         }, 10);
-        return false;
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_changeNotification:
+                boolean currentValue = getSharedPreferences(PREFS_NAME, 0).getBoolean("showNotification", false);
+
+                getSharedPreferences(PREFS_NAME, 0).edit()
+                        .putBoolean("showNotification", !currentValue)
+                        .commit();
+                if(currentValue){
+                    Toast.makeText(getApplicationContext(), R.string.toast_notification_off, Toast.LENGTH_SHORT)
+                        .show();
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.toast_notification_on, Toast.LENGTH_SHORT)
+                            .show();
+                }
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public static final String PREFS_NAME = "MothershipPrefs";
@@ -294,6 +332,12 @@ public class MainActivity extends FragmentActivity {
         long lastGcmMessageTime = getSharedPreferences(PREFS_NAME, 0).getLong("gcmMessageTime", 0);
         if (lastGcmMessageTime > currentMessage.time.getTime()) {
             String[] gcmMessages = Utils.loadArray("gcmMessages", getApplicationContext());
+            if(gcmMessages.length == 0) {
+                Log.v("TEST:" + TAG, "Showing single message from app schedule because of empty array!");
+                showMessage(typingOption, currentMessage);
+                return;
+            }
+
             if (gcmMessages.length == 1) {
                 Log.v("TEST:" + TAG, "Showing single message");
 

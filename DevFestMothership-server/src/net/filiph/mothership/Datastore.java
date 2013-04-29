@@ -293,4 +293,44 @@ public final class Datastore {
         }
     }
 
+    public static void saveLastMessage(String message, int ai_id) {
+        logger.info("Saving message " + message);
+        Key key = KeyFactory.createKey("lastMessage", "myKey");
+        Transaction txn = datastore.beginTransaction();
+        try {
+            Entity entity = new Entity(key);
+            entity.setProperty("text", message);
+            entity.setProperty("ai_id", ai_id);
+            datastore.put(entity);
+            txn.commit();
+        } finally {
+            if (txn.isActive()) {
+                txn.rollback();
+            }
+        }
+    }
+
+    public static String readLastMessage() {
+        logger.info("Reading message");
+        String message = "";
+        Key key = KeyFactory.createKey("lastMessage", "myKey");
+        Transaction txn = datastore.beginTransaction();
+        try {
+            Entity entity = datastore.get(key);
+            if ("0".equals(entity.getProperty("ai_id").toString()))
+                message += "Agnes říká: ";
+            else
+                message += "Eddie říká: ";
+            message += entity.getProperty("text");
+
+        } catch (EntityNotFoundException e) {
+            message = "There is no last message!";
+        } finally {
+            if (txn.isActive()) {
+                txn.rollback();
+            }
+        }
+        return message;
+    }
+
 }

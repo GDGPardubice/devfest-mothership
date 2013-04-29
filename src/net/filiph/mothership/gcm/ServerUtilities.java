@@ -36,16 +36,16 @@ import com.google.android.gcm.GCMRegistrar;
  */
 public final class ServerUtilities {
 
-	private static final String TAG = "ServerUtilities";
-    private static final int MAX_ATTEMPTS = 5;
-    private static final int BACKOFF_MILLI_SECONDS = 2000;
-    private static final Random random = new Random();
+        private static final String TAG = "ServerUtilities";
+        private static final int MAX_ATTEMPTS = 5;
+        private static final int BACKOFF_MILLI_SECONDS = 2000;
+        private static final Random random = new Random();
 
-    /**
-     * Register this account/device pair within the server.
-     *
-     * @return whether the registration succeeded or not.
-     */
+        /**
+         * Register this account/device pair within the server.
+         *
+         * @return whether the registration succeeded or not.
+         */
     public static boolean register(final Context context, final String regId) {
         Log.i(CommonUtilities.TAG, "registering device (regId = " + regId + ")");
         String serverUrl = CommonUtilities.SERVER_URL + "/register";

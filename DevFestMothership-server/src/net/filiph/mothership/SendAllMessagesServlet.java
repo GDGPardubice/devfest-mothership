@@ -53,6 +53,7 @@ public class SendAllMessagesServlet extends BaseServlet {
 			List<String> partialDevices = new ArrayList<String>(total);
 			int counter = 0;
 			int tasks = 0;
+            int ai_id = 0;
 			String messageText = "[";
 			if (req.getParameter("notify")!=null) {
 				messageText += "n";
@@ -68,14 +69,22 @@ public class SendAllMessagesServlet extends BaseServlet {
             }
             if ("Agnes".equals(req.getParameter("ui_name"))) {
                 messageText += "0";
+                ai_id = 0;
             }
             else if ("Eddie".equals(req.getParameter("ui_name"))) {
                 messageText += "1";
+                ai_id = 1;
             }
 			messageText += "]";
 			if (req.getParameter("message") != null) {
 				messageText += req.getParameter("message");
-			}			
+			}
+
+            if (req.getParameter("update")==null) {
+                // Save the last message to datastore
+                Datastore.saveLastMessage(req.getParameter("message"), ai_id);
+            }
+
 			for (String device : devices) {
 				counter++;
 				partialDevices.add(device);

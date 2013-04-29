@@ -30,5 +30,14 @@
 
     <string name="notificationMessageText0">Přišla nová zpráva od Agnes.</string>
     <string name="notificationMessageText1">Přišla nová zpráva od Eddieho.</string>
+    <string name="dialog_show_notification">Chceš dostávat notifikace z DevFestu v Pardubicích?</string>
+    <string name="dialog_button_yes">Ano</string>
+    <string name="dialog_button_no">Ne</string>
+
+    <string name="menu_notification_on">Zapnout notifikace</string>
+    <string name="menu_notification_off">Vypnout notifikace</string>
+
+    <string name="toast_notification_on">Notifikace byly zapnuty.</string>
+    <string name="toast_notification_off">Notifikace byly vypnuty.</string>
 </resources>
 
