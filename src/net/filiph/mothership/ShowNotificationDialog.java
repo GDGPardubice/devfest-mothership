@@ -15,6 +15,9 @@ import android.widget.Toast;
  * To change this template use File | Settings | File Templates.
  */
 public class ShowNotificationDialog extends DialogFragment {
+
+    public static final String notificationDbValue = "showNotificationPraha2013";
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
@@ -24,7 +27,7 @@ public class ShowNotificationDialog extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         // User approved the dialog
                         getActivity().getApplicationContext().getSharedPreferences(MainActivity.PREFS_NAME, 0).edit()
-                                .putBoolean("showNotification", true)
+                                .putBoolean(notificationDbValue, true)
                                 .commit();
                         Toast.makeText(getActivity().getApplicationContext(), R.string.toast_notification_on, Toast.LENGTH_SHORT)
                                 .show();
@@ -34,7 +37,7 @@ public class ShowNotificationDialog extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         // User cancelled the dialog
                         getActivity().getApplicationContext().getSharedPreferences(MainActivity.PREFS_NAME, 0).edit()
-                                .putBoolean("showNotification", false)
+                                .putBoolean(notificationDbValue, false)
                                 .commit();
                         Toast.makeText(getActivity().getApplicationContext(), R.string.toast_notification_off, Toast.LENGTH_SHORT)
                                 .show();

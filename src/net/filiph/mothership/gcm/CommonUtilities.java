@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Vibrator;
 import android.util.Log;
+import net.filiph.mothership.ShowNotificationDialog;
 import net.filiph.mothership.Utils;
 
 /**
@@ -40,8 +41,8 @@ public final class CommonUtilities {
     /**
      * Google API project id registered to use GCM.
      */
-    //public static final String SENDER_ID = "436765997997";863938442665
-    public static final String SENDER_ID = "863938442665";
+    //public static final String SENDER_ID = "436765997997"; //mothership-backdoor
+    public static final String SENDER_ID = "863938442665";  //test-agnes-pardubice
 
     /**
      * Tag used on log messages.
@@ -146,7 +147,7 @@ public final class CommonUtilities {
             context.sendBroadcast(updateIntent);
         }
 
-        boolean showNotification = context.getSharedPreferences(MainActivity.PREFS_NAME, 0).getBoolean("showNotification", false);
+        boolean showNotification = context.getSharedPreferences(MainActivity.PREFS_NAME, 0).getBoolean(ShowNotificationDialog.notificationDbValue, false);
             showNotification = showNotification || forceNotification;
 
         if (notify && showNotification) {

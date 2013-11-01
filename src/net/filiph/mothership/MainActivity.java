@@ -82,11 +82,12 @@ public class MainActivity extends FragmentActivity {
     /**
      * Called when the activity is about to start interacting with the user.
      */
+    private Thread thread;
     @Override
     protected void onResume() {
         super.onResume();
 
-        if (!getSharedPreferences(PREFS_NAME, 0).contains("showNotification")) {
+        if (!getSharedPreferences(PREFS_NAME, 0).contains(ShowNotificationDialog.notificationDbValue)) {
             new ShowNotificationDialog().show(getSupportFragmentManager(), "ShowNotificationDialogFragment");
         }
 
@@ -217,7 +218,7 @@ public class MainActivity extends FragmentActivity {
 
     public boolean onPrepareOptionsMenu(final Menu menu) {
         final MenuItem menuButton = menu.findItem(R.id.menu_changeNotification);
-        if (!getSharedPreferences(PREFS_NAME, 0).getBoolean("showNotification", false)) {
+        if (!getSharedPreferences(PREFS_NAME, 0).getBoolean(ShowNotificationDialog.notificationDbValue, false)) {
             menuButton.setTitle(R.string.menu_notification_on);
         } else {
             menuButton.setTitle(R.string.menu_notification_off);
@@ -287,10 +288,10 @@ public class MainActivity extends FragmentActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.menu_changeNotification:
-                boolean currentValue = getSharedPreferences(PREFS_NAME, 0).getBoolean("showNotification", false);
+                boolean currentValue = getSharedPreferences(PREFS_NAME, 0).getBoolean(ShowNotificationDialog.notificationDbValue, false);
 
                 getSharedPreferences(PREFS_NAME, 0).edit()
-                        .putBoolean("showNotification", !currentValue)
+                        .putBoolean(ShowNotificationDialog.notificationDbValue, !currentValue)
                         .commit();
                 if(currentValue){
                     Toast.makeText(getApplicationContext(), R.string.toast_notification_off, Toast.LENGTH_SHORT)

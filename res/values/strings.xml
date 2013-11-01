@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2007 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -26,11 +25,12 @@
 
     <string name="pokyn0">Vyčkej na další pokyny. \n\nZatím vše najdeš na <a href="http://www.devfest.cz/">devfest.cz</a>.</string>
 
-    <string name="notificationMessage">DevFest Pardubice</string>
+    <string name="notificationMessage">DevFest Praha 2013</string>
 
     <string name="notificationMessageText0">Přišla nová zpráva od Agnes.</string>
     <string name="notificationMessageText1">Přišla nová zpráva od Eddieho.</string>
-    <string name="dialog_show_notification">Chceš dostávat notifikace z DevFestu v Pardubicích?</string>
+
+    <string name="dialog_show_notification">Chceš dostávat notifikace z DevFestu v Praze?</string>
     <string name="dialog_button_yes">Ano</string>
     <string name="dialog_button_no">Ne</string>
 

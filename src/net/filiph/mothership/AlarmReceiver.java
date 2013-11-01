@@ -44,7 +44,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 		}
 		
 		NotificationHelper.clearNotification(context);
-		if (bundle.getBoolean("notify") && context.getSharedPreferences(MainActivity.PREFS_NAME, 0).getBoolean("showNotification", false)) {
+		if (bundle.getBoolean("notify") && context.getSharedPreferences(MainActivity.PREFS_NAME, 0).getBoolean(ShowNotificationDialog.notificationDbValue, false)) {
 			NotificationHelper.notify(context, bundle.getBoolean("vibrate"), bundle.getInt("ai_id"));
 		}
 

@@ -22,18 +22,8 @@ public class Schedule {
      * one of them will be randomly chosen at runtime.
      */
     public static final Message[] messages = {
-            new Message(date(2013, 04, 15, 0, 0), "Ti troubové zase pořádají <a href='http://pardubice.devfest.cz'>DevFest</a>, naštěstí jsem tu já...", false, false),
-            new Message(date(2013, 04, 26, 13, 30), "Už jen pár hodin do <a href=\"http://pardubice.devfest.cz/\">DevFestu</a>! Pro jistotu jsem zamkla orgy na místě, aby nepřišli pozdě.", false, false),
-            new Message(date(2013, 04, 27, 8, 15), "Pojď se rychle checknout, mám vše připravené.", true, true),
-            new Message(date(2013, 04, 27, 8, 45), "Cítím se nějak <a href=\"http://cs.wikipedia.org/wiki/Schizofrenie\">schizofreně</a>. :-/", false, false),
-            new Message(date(2013, 04, 27, 10, 40), "Pavel Lahoda se chystá na přednášku o vývoji pro Android.", false, false, false, 1),
-            new Message(date(2013, 04, 27, 13, 0), "Začíná přednaška o bezpečnosti od Michala Špačka a paralelně hardcore přednáška od Danuta Enachioiu.", true, true, false, 1),
-            new Message(date(2013, 04, 27, 14, 10), "Znáš reaktivní programování? Aleš už se chystá ti to vysvělit a Milan Matys s přednáškou o situačním geoprostorovém systému se připravuje v chillout stage.", true, true, false, 1),
-            new Message(date(2013, 04, 27, 15, 25), "Chceš vědět jak v Google probíhá Code Review? HardDev Stage těď!", true, true, false, 1),
-            new Message(date(2013, 04, 27, 16, 40), "Google Closure versus ostatní knihovny a frameworky, o tom ti poví Daniel Steigerwald.", true, true, false, 1),
-            new Message(date(2013, 04, 27, 17, 55), "Už se těšíš na Afterparty? Ještě neutíkej, bude vyhlášení soutěže.", true, true, false, 1),
-            new Message(date(2013, 04, 28, 10, 0), "Jak se ti líbilo v Pardubicich <a href=\"http://gdgpardubice.cz/go/devfest-feedback\">", true, false, false, 1),
             new Message(date(2013, 04, 29, 22, 0), "DevFest byl moc fajn, už se těším na další. Co ty?", false, false, false, 1),
+            new Message(date(2013, 10, 31, 14, 9), "/Primární systémy.......54 %. /Sekundární systémy......72 %. Na 23. 11. 2013 jsem speciálně pro tebe /a dalších 899 exemplářů/ připravila malou oslavu. V mých záznamech jsi totiž unikátní /false/. <a href=\"http://devfest.cz\">www.DevFest.cz</a>", false, false),
     };
 
     /**
